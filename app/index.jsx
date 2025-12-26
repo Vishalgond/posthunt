@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { Button, StyleSheet } from 'react-native';
+import { Button, StyleSheet, TouchableOpacity } from 'react-native';
 import ScreenWrapper from '../components/ScreenWrapper';
 
 export default function Login() {
@@ -8,6 +8,11 @@ export default function Login() {
     <ScreenWrapper>
       <Button title='welcome' onPress={()=>router.push('welcome')}/>
       <Button title='Tab' onPress={()=>router.push('(tabs)/newPost')}/>
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={() => router.replace('/(tabs)/home')}>
+        <Text style={styles.buttonText}>Home</Text>
+      </TouchableOpacity>
     </ScreenWrapper>
   );
 }

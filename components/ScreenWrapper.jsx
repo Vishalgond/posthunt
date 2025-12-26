@@ -1,16 +1,17 @@
-import { View } from 'react-native';
+import { Platform, StatusBar, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { theme } from '../constants/theme';
 
-const ScreenWrapper = ({children,bg}) => {
-    const {top} = useSafeAreaInsets();
-    const paddingTop = top>0 ? top+5 : 30;
+const ScreenWrapper = ({ children, bg = theme.colors.primary }) => {
+  const { top } = useSafeAreaInsets();
+  
+  const paddingTop = Platform.OS === 'ios' ? top : top > 0 ? top : StatusBar.currentHeight;
+
   return (
-    <View style={{flex:1, paddingTop, backgroundColor:bg}}>
-      {
-        children
-      }
+    <View style={{ flex: 1, paddingTop, backgroundColor: bg }}>
+      {children}
     </View>
-  )
-}
+  );
+};
 
-export default ScreenWrapper
+export default ScreenWrapper;
