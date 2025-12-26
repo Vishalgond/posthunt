@@ -24,7 +24,15 @@ export default function Login() {
       <TouchableOpacity onPress={() => router.push('/register')}>
         <Text style={styles.link}>Create Account</Text>
       </TouchableOpacity>
-    </View>
+
+
+
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={() => router.replace('/(tabs)/home')}>
+        <Text style={styles.buttonText}>Home</Text>
+      </TouchableOpacity>
+      </View>
   );
 }
 
