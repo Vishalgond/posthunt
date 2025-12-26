@@ -7,6 +7,7 @@ export default function Login() {
   return (
     <ScreenWrapper>
       <Button title='welcome' onPress={()=>router.push('welcome')}/>
+      <Button title='Tab' onPress={()=>router.push('(tabs)/newPost')}/>
     </ScreenWrapper>
   );
 }

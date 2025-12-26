@@ -1,38 +1,28 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
+import { Stack } from 'expo-router'
+import { useEffect } from 'react'
+import { AuthProvioder, useAuth } from '../../contexts/AuthContext'
 
-export default function TabsLayout() {
+const _layout = () => {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="create"
-        options={{
-          title: 'Create',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="add-circle" size={size} color={color} />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: 'Profile',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" size={size} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
-  );
+    <AuthProvioder>
+      <MainLayout/>
+    </AuthProvioder>
+  )
 }
+
+const MainLayout = () =>{
+  const {setAuth} = useAuth();
+
+  useEffect(()=>{
+    
+  })
+  return(
+    <Stack
+      screenOptions={{
+        headerShown:false
+      }}
+    />
+  )
+}
+
+export default _layout
