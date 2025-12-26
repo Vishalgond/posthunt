@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import ScreenWrapper from '../components/ScreenWrapper';
 
 export default function Login() {
