@@ -1,7 +1,9 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { ArrowLeft, X } from 'lucide-react-native';
+import { X } from 'lucide-react-native';
 import { useEffect, useState } from 'react';
 import { Alert, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Header from '../../components/Header';
+import ScreenWrapper from '../../components/ScreenWrapper';
 
 export default function CreatePost() {
   const params = useLocalSearchParams(); 
@@ -29,45 +31,40 @@ export default function CreatePost() {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()}>
-          <ArrowLeft size={26} color="#000" /> 
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>
-          {params.edit === 'true' ? "Edit Post" : "Create Post"}
-        </Text>
+    <ScreenWrapper>
+      <View style={styles.container}>
+        <Header title="Edit Post" showBackButton={true}/>
+
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <TextInput
+            value={text}
+            onChangeText={setText}
+            placeholder="What's on your mind?"
+            multiline
+            style={styles.input}
+          />
+
+          {file && (
+            <View style={styles.imageWrapper}>
+              <Image source={{ uri: file }} style={styles.previewImage} />
+              <TouchableOpacity style={styles.closeIcon} onPress={() => setFile(null)}>
+                <X size={20} color="white" />
+              </TouchableOpacity>
+            </View>
+          )}
+
+          <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Image", "Pick Image Clicked")}>
+            <Text style={styles.buttonText}>Pick Image</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={[styles.button, styles.uploadBtn]} onPress={handlePost}>
+            <Text style={styles.buttonText}>
+              {params.edit === 'true' ? "Update Post" : "Upload Post"}
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
-
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <TextInput
-          value={text}
-          onChangeText={setText}
-          placeholder="What's on your mind?"
-          multiline
-          style={styles.input}
-        />
-
-        {file && (
-          <View style={styles.imageWrapper}>
-            <Image source={{ uri: file }} style={styles.previewImage} />
-            <TouchableOpacity style={styles.closeIcon} onPress={() => setFile(null)}>
-              <X size={20} color="white" />
-            </TouchableOpacity>
-          </View>
-        )}
-
-        <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Image", "Pick Image Clicked")}>
-          <Text style={styles.buttonText}>Pick Image</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={[styles.button, styles.uploadBtn]} onPress={handlePost}>
-          <Text style={styles.buttonText}>
-            {params.edit === 'true' ? "Update Post" : "Upload Post"}
-          </Text>
-        </TouchableOpacity>
-      </ScrollView>
-    </View>
+    </ScreenWrapper>
   );
 }
 

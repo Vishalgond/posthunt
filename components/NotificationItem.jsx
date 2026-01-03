@@ -7,35 +7,24 @@ import Avatar from './Avatar'
 const NotificationItem = ({item,router}) => {
 
   const handleClick =()=>{
-    let {postId,commentId} = JSON.parse(item?.data);
-    router.push({pathname: 'postDetails', params: {postId,commentId}})
+    // let {postId,commentId} = JSON.parse(item?.data);
+    // router.push({pathname: 'postDetails', params: {postId,commentId}})
   }
-  // console.log(item)
-  // const createAt = moment(item?.created_at).format('MMM d');
   return (
     <TouchableOpacity style={styles.container} onPress={handleClick}>
       <Avatar
-        uri={item?.sender?.image}
+        // uri={item?.sender?.image}
         size={hp(5)}
       />
       <View style={styles.nameTitle}>
           <Text style={styles.text}>
-            {/* {
-              item?.sender?.name
-            } */}
             Vishal Gond
           </Text>
           <Text style={[styles.text,{color:theme.colors.textDark}]}>
-            {/* {
-              item?.title?.name
-            } */}
             commented on your post
           </Text>
       </View>
       <Text style={[styles.text,{color:theme.colors.textLight}]}>
-          {/* {
-            item?.created_at
-          } */}
           Jan 1
       </Text>
     </TouchableOpacity>

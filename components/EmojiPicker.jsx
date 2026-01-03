@@ -1,9 +1,10 @@
-import { StyleSheet } from 'react-native'
-import { TabView } from 'react-native-tab-view'
+import { StyleSheet, View } from 'react-native'
 
 const EmojiPicker = () => {
   return (
-    <TabView/>
+    <View>
+
+    </View>
   )
 }
 

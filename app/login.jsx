@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useRef, useState } from 'react'
-import { Alert, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import BackButton from '../components/BackButton'
 import Button from '../components/Button'
 import Input from '../components/Input'
@@ -17,11 +17,12 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async ()=>{
-    if(!emailRef.current || !passwordRef.current){
-      Alert.alert('Login','Please fill all');
-      return;
-    }
-
+    // if(!emailRef.current || !passwordRef.current){
+    //   Alert.alert('Login','Please fill all');
+    //   return;
+    // }
+    // setLoading(true);
+    router.push('/(tabs)/home')
   }
   return (
     <ScreenWrapper bg="white">

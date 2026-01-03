@@ -27,7 +27,7 @@ const ChatList = () => {
               return(
                 <Chat
                   router={router}
-                  key={item}
+                  key={index}
                 />
               )
             })

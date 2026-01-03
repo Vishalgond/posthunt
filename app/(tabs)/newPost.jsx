@@ -6,7 +6,7 @@ import { useRef, useState } from 'react'
 import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Avatar from '../../components/Avatar'
 import Button from '../../components/Button'
-import Header from '../../components/Loading'
+import Header from '../../components/Header'
 import RichTextEditor from '../../components/RichTextEditor'
 import ScreenWrapper from '../../components/ScreenWrapper'
 import { theme } from '../../constants/theme'
@@ -93,7 +93,7 @@ const newPost = () => {
     }
   return (
     <ScreenWrapper>
-        <Header title="Create Post" />
+        <Header title="Create Post" showBackButton={true}/>
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{gap:20}}>
             {/* avatar */}

@@ -8,7 +8,12 @@ import { theme } from '../../constants/theme';
 import { hp, wp } from '../../helpers/common';
 
 const notifications = () => {
-  const [notifications, setNotifications] = useState([1]);
+  const [notifications, setNotifications] = useState([{
+    'id':1,
+    'name':'vishal',
+    'comments':'Hello, How are you',
+    'time':'Jan 1'
+  }]);
   const router = useRouter();
   useEffect(()=>{
 

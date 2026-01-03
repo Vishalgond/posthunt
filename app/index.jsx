@@ -1,20 +1,32 @@
 import { useRouter } from 'expo-router';
-import { Button, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
+import Loading from '../components/Loading';
 import ScreenWrapper from '../components/ScreenWrapper';
 
-export default function Login() {
+export default function Index() {
   const router = useRouter()
+  useEffect(()=>{
+    const timerId = setTimeout(() => {
+        router.push('/welcome')
+    }, 3000);
+    return () => {
+      clearTimeout(timerId);
+    }
+  },[])
   return (
     <ScreenWrapper>
-      <Button title='welcome' onPress={()=>router.push('welcome')}/>
-      <Button title='Tab' onPress={()=>router.push('(tabs)/newPost')}/>
-      <TouchableOpacity 
-        style={styles.button} 
-        onPress={() => router.replace('/(tabs)/home')}>
-        <Text style={styles.buttonText}>Home</Text>
-      </TouchableOpacity>
+      <View style={styles.container}>
+        <Loading title="" showBackButton={true}/>
+      </View>
     </ScreenWrapper>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  }
+});

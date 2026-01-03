@@ -12,28 +12,18 @@ const Chat = ({router}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={handleClick}>
       <Avatar
-        // uri={item?.sender?.image}
         size={hp(5)}
       />
       <View style={styles.nameTitle}>
           <Text style={styles.text}>
-            {/* {
-              item?.sender?.name
-            } */}
             Vishal Gond
           </Text>
           <Text style={[styles.text,{color:theme.colors.textDark}]}>
-            {/* {
-              item?.title?.name
-            } */}
             Hello
           </Text>
       </View>
       <View style={{alignItems:'center'}}>
         <Text style={[styles.text,{color:theme.colors.textLight}]}>
-            {/* {
-                item?.created_at
-            } */}
             Jan 1
         </Text>
         <Text style={styles.msgnumber}>1</Text>

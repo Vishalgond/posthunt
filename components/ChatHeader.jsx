@@ -1,5 +1,5 @@
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons'
-import { router } from 'expo-router'
+import { useRouter } from 'expo-router'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { theme } from '../constants/theme'
 import { hp } from '../helpers/common'
@@ -7,6 +7,7 @@ import Avatar from './Avatar'
 import BackButton from './BackButton'
 
 const ChatHeader = ({username,bio,picture,onlineStatus,onPress}) => {
+    const router = useRouter();
   return (
     <View style={styles.container}>
       <BackButton router={router}/>

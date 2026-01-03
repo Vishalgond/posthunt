@@ -1,7 +1,9 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Send } from 'lucide-react-native';
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Header from '../../components/Header';
 import PostCard from '../../components/PostCard';
+import ScreenWrapper from '../../components/ScreenWrapper';
 import { theme } from '../../constants/theme';
 import { hp, wp } from '../../helpers/common';
 
@@ -18,52 +20,46 @@ const PostDetails = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <ScreenWrapper>
+            <View style={styles.container}>
+                <Header title='Comments' showBackButton={true}/>
+                <ScrollView 
+                    showsVerticalScrollIndicator={false} 
+                    contentContainerStyle={styles.scrollContent}
+                >
+                    <PostCard item={item} hasShadow={false} showIcons={false} />
 
-            <View style={styles.header}>
-                <TouchableOpacity onPress={() => router.back()}>
-                    <Text style={styles.backButton}>{"<"}</Text>
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>Comments</Text>
-            </View>
+                    <View style={styles.commentSection}>
+                        <Text style={styles.sectionTitle}>Comments</Text>
+                        
 
-  
-            <ScrollView 
-                showsVerticalScrollIndicator={false} 
-                contentContainerStyle={styles.scrollContent}
-            >
-                <PostCard item={item} hasShadow={false} showIcons={false} />
-
-                <View style={styles.commentSection}>
-                    <Text style={styles.sectionTitle}>Comments</Text>
-                    
-
-                    <View style={styles.commentItem}>
-                        <View style={styles.avatarMini}><Text>U</Text></View>
-                        <View style={styles.commentBubble}>
-                            <Text style={styles.commentUser}>Divya Pandey</Text>
-                            <Text style={styles.commentText}>Great work on this UI</Text>
+                        <View style={styles.commentItem}>
+                            <View style={styles.avatarMini}><Text>U</Text></View>
+                            <View style={styles.commentBubble}>
+                                <Text style={styles.commentUser}>Divya Pandey</Text>
+                                <Text style={styles.commentText}>Great work on this UI</Text>
+                            </View>
                         </View>
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
 
-            <KeyboardAvoidingView 
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
-            >
-                <View style={styles.inputContainer}>
-                    <TextInput 
-                        placeholder="Type a comment..." 
-                        style={styles.input}
-                        placeholderTextColor={theme.colors.textLight}
-                    />
-                    <TouchableOpacity style={styles.sendIcon}>
-                        <Send color={theme.colors.primary} size={hp(2.8)} />
-                    </TouchableOpacity>
-                </View>
-            </KeyboardAvoidingView>
-        </View>
+                <KeyboardAvoidingView 
+                    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                    keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
+                >
+                    <View style={styles.inputContainer}>
+                        <TextInput 
+                            placeholder="Type a comment..." 
+                            style={styles.input}
+                            placeholderTextColor={theme.colors.textLight}
+                        />
+                        <TouchableOpacity style={styles.sendIcon}>
+                            <Send color={theme.colors.primary} size={hp(2.8)} />
+                        </TouchableOpacity>
+                    </View>
+                </KeyboardAvoidingView>
+            </View>
+        </ScreenWrapper>
     );
 };
 
