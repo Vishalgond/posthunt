@@ -36,7 +36,6 @@ const Home = () => {
     return (
         <ScreenWrapper bg="white">
             <View style={styles.container}>
-                {/* --- VIDEO STYLE HEADER --- */}
                 <View style={styles.header}>
                     <Text style={styles.title}>PostHunt</Text>
                     <View style={styles.icons}>
