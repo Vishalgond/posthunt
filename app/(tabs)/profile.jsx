@@ -21,7 +21,7 @@ const Profile = () => {
     return (
         <ScreenWrapper bg="white">
             <View style={styles.container}>
-                <Header title="Profile" showBackButton={false} />
+                <Header title="Profile" showBackButton={true} />
                 
                 <View style={styles.content}>
                     <View style={styles.avatarContainer}>
