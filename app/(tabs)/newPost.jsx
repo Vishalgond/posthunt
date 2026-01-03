@@ -4,7 +4,9 @@ import * as ImagePicker from 'expo-image-picker'
 import { useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
 import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import Avatar from '../../components/Avatar'
 import Button from '../../components/Button'
+import Header from '../../components/Loading'
 import RichTextEditor from '../../components/RichTextEditor'
 import ScreenWrapper from '../../components/ScreenWrapper'
 import { theme } from '../../constants/theme'
@@ -91,15 +93,16 @@ const newPost = () => {
     }
   return (
     <ScreenWrapper>
+        <Header title="Create Post" />
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{gap:20}}>
             {/* avatar */}
             <View style={styles.header}>
-                {/* <Avatar
+                <Avatar
                     uri={user?.image}
                     size={hp(6.5)}
                     rounded={theme.radius.xl}
-                /> */}
+                />
                 <View style={{gap:2}}>
                     <Text style={styles.username}>
                         {

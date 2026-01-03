@@ -1,5 +1,6 @@
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Avatar from '../../components/Avatar';
 import Header from '../../components/Header';
 import ScreenWrapper from '../../components/ScreenWrapper';
@@ -18,23 +19,43 @@ const Profile = () => {
         image: null 
     };
 
+    const onLogout = async ()=>{
+        router.push('../welcome');
+    }
+    const handleLogout = async ()=>{
+        Alert.alert("Confirm",'Are you sure you want to log out ?',[
+            {
+                text:'Cancel',
+                onPress:()=> console.log('modal cancelled'),
+                style:'cancel'
+            },
+            {
+                text:'Logout',
+                onPress:()=>onLogout(),
+                style:'destructive'
+            }
+        ])
+    }
+
     return (
         <ScreenWrapper bg="white">
             <View style={styles.container}>
-                <Header title="Profile" showBackButton={false} />
-                
+                <Header title="Profile" mb={30} showBackButton={true} />
+                <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+                    <Ionicons name="log-out-outline" size={26} color="black" />
+                </TouchableOpacity>
                 <View style={styles.content}>
                     <View style={styles.avatarContainer}>
                         <Avatar
                             uri={dummyUser.image}
                             size={hp(12)}
-                            rounded={hp(6)} 
+                            rounded={theme.radius.xxl*1.4} 
                         />
                         <Pressable 
                             style={styles.editIcon} 
                             onPress={() => router.push('editProfile')}
                         >
-                            <Text style={{fontSize: 12, fontWeight: 'bold'}}>Edit</Text>
+                            <AntDesign name="edit" size={20} color="black" />
                         </Pressable>
                     </View>
 
@@ -87,5 +108,12 @@ const styles = StyleSheet.create({
         fontSize: hp(1.8), 
         color: theme.colors.textDark,
          textAlign: 'center', 
-         marginTop: 10 }
+         marginTop: 10 },
+    logoutButton:{
+        position:'absolute',
+        right:20,
+        padding:5,
+        borderRadius:theme.radius.sm,
+        backgroundColor:'#fee2e2'
+    }
 });

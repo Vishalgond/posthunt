@@ -7,6 +7,7 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import { theme } from '../../constants/theme';
 import { hp, wp } from '../../helpers/common';
 
+import { Ionicons } from '@expo/vector-icons';
 import { Heart, PlusSquare } from 'lucide-react-native';
 
 const Home = () => {
@@ -43,8 +44,11 @@ const Home = () => {
                             <PlusSquare size={hp(3.2)} color={theme.colors.textDark} strokeWidth={2} />
                         </Pressable>
                         <Pressable>
-                            <Heart size={hp(3.2)} color={theme.colors.textDark} strokeWidth={2} />
+                            <Heart onPress={()=>router.push('/notifications')} size={hp(3.2)} color={theme.colors.textDark} strokeWidth={2} />
                         </Pressable>
+                        <Pressable onPress={()=>router.push('/chatList')}>
+                            <Ionicons name="chatbubble-ellipses-outline" size={hp(3.2)} color="black" />
+                        </Pressable>c
                         <Pressable onPress={()=> router.push('profile')}>
                             <Avatar 
                                 size={hp(4.3)} 
