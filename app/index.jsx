@@ -13,7 +13,13 @@ export default function Login() {
         onPress={() => router.replace('/(tabs)/home')}>
         <Text style={styles.buttonText}>Home</Text>
       </TouchableOpacity>
+            <TouchableOpacity 
+        style={styles.button} 
+        onPress={() => router.replace('/(main)/addressExtractor')}>
+        <Text style={styles.buttonText}>Ai address fixer</Text>
+      </TouchableOpacity>
     </ScreenWrapper>
+    
   );
 }
 
